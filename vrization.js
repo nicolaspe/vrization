@@ -128,9 +128,10 @@ function animate(timestamp) {
   let delta = Math.min(timestamp - lastRenderTime, 500);
   lastRenderTime = timestamp;
 
-  controls.update();
+  // controls.update();
 
   if(vrDisplay.isPresenting){
+    controls.update();
     effect.render(scene, camera);
   } else {
     renderer.render(scene, camera);
