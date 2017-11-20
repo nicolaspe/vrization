@@ -183,7 +183,7 @@ function createDome(){
   // https://www.eso.org/public/usa/images/eso0932a/
   let skyGeo = new THREE.SphereGeometry(500, 25, 25);
   let skyMat = new THREE.MeshPhongMaterial({
-  	map: loader.load("/media/eso0932a_sphere.jpg"),
+  	map: loader.load("media/eso0932a_sphere.jpg"),
   });
   let skyDome = new THREE.Mesh(skyGeo, skyMat);
   skyDome.material.side = THREE.BackSide;
@@ -209,7 +209,7 @@ function createParticles(part_num){
 	let part_mat = new THREE.PointsMaterial({
 		color: 0xdd99ff,
 		size: 20,
-		map: loader.load("/media/particle_img.png"),
+		map: loader.load("media/particle_img.png"),
 		transparent: true,
 		blending: THREE.AdditiveBlending,
 	});
@@ -295,7 +295,7 @@ function createTone(){
 
   // player
   player = new Tone.Player({
-  	'url':'/media/hellfire.mp3'
+  	'url':'media/hellfire.mp3'
   });
   player.fan(fft).toMaster();
   player.autostart = false;
