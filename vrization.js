@@ -295,7 +295,7 @@ function createTone(){
 
   // player
   player = new Tone.Player({
-  	'url':'../media/hellfire.mp3'
+  	'url':'/media/hellfire.mp3'
   });
   player.fan(fft).toMaster();
   player.autostart = false;
