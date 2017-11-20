@@ -166,7 +166,7 @@ function loadPlayButton() {
 function createEnvironment(){
   createLight();
   createDome();
-  createParticles(80);
+  createParticles(500);
 }
 // create lights
 function createLight(){
@@ -179,7 +179,7 @@ function createDome(){
   // https://www.eso.org/public/usa/images/eso0932a/
   let skyGeo = new THREE.SphereGeometry(500, 25, 25);
   let skyMat = new THREE.MeshPhongMaterial({
-  	map: loader.load("media/eso0932a_sphere.jpg"),
+  	map: loader.load("media/eso0932a_sphere_min.jpg"),
   });
   let skyDome = new THREE.Mesh(skyGeo, skyMat);
   skyDome.material.side = THREE.BackSide;
