@@ -65,29 +65,31 @@ function onLoad(){
   // Initialize (Web)VR
   renderer.vr.enabled = true;
   setupVRStage();
+
   // vrButton = WEBVR.getButton( vrDisplay, renderer );
   // document.body.appendChild( vrButton );
-  let vrui_options = {
-    color: 'white',
-    background: false,
-    corners: 'round'
-  };
-  vrButton = new webvrui.EnterVRButton(renderer.domElement, vrui_options);
-  vrButton.on("enter", function(){
-    console.log("Enter VR");
-  });
-  vrButton.on("exit", function(){
-    console.log("Exit VR");
-    camera.quaternion.set(0, 0, 0, 1);
-    camera.position.set(0, controls.userHeight, 0);
-  });
-  vrButton.on("hide", function(){
-    document.getElementById('vr_bb').style.display = 'none';
-  });
-  vrButton.on("show", function(){
-    document.getElementById('vr_bb').style.display = 'inherit';
-  });
-  document.getElementById('vr_bb').appendChild(vrButton.domElement);
+
+  // let vrui_options = {
+  //   color: 'white',
+  //   background: false,
+  //   corners: 'round'
+  // };
+  // vrButton = new webvrui.EnterVRButton(renderer.domElement, vrui_options);
+  // vrButton.on("enter", function(){
+  //   console.log("Enter VR");
+  // });
+  // vrButton.on("exit", function(){
+  //   console.log("Exit VR");
+  //   camera.quaternion.set(0, 0, 0, 1);
+  //   camera.position.set(0, controls.userHeight, 0);
+  // });
+  // vrButton.on("hide", function(){
+  //   document.getElementById('vr_bb').style.display = 'none';
+  // });
+  // vrButton.on("show", function(){
+  //   document.getElementById('vr_bb').style.display = 'inherit';
+  // });
+  // document.getElementById('vr_bb').appendChild(vrButton.domElement);
 
   // EVENTS
   window.addEventListener('resize', onWindowResize, true );
@@ -111,9 +113,12 @@ function setupVRStage(){
       if(vrDisplay.stageParameters) {
         setStageDimensions(vrDisplay.stageParameters);
       }
+      vrButton = WEBVR.getButton( vrDisplay, renderer );
+      document.body.appendChild( vrButton );
       // vrDisplay.requestAnimationFrame(animate);
     }
   });
+
 }
 // rearrange the scene according to the stage
 // (does nothing for now)
@@ -138,8 +143,6 @@ function animate(timestamp) {
   }
   vrDisplay.requestAnimationFrame(animate);
 
-	// renderer.render(scene, camera);
-  // requestAnimationFrame(animate);  // <- NOT ANYMORE!!
 }
 
 /*
@@ -149,9 +152,10 @@ function onWindowResize(){
   let wid = window.innerWidth;
   let hei = window.innerHeight;
   effect.setSize(wid, hei);
+  renderer.setSize(wid, hei);
 	camera.aspect = wid/hei;
   camera.updateProjectionMatrix();
-  renderer.setSize(wid, hei);
+  console.log("UPDATE SIZE");
 }
 function loadPlayButton() {
 	// enable the button
