@@ -134,7 +134,7 @@ function animate(timestamp) {
     effect.render(scene, camera);
     vrDisplay.requestAnimationFrame(animate);
   } else {
-    controls.update();
+    // controls.update();
 
     renderer.render(scene, camera);
     window.requestAnimationFrame(animate);
