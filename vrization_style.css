@@ -1,0 +1,42 @@
+html {
+	background: black;
+	/*background: #190337;*/
+	/*padding: 15px;*/
+}
+
+body {
+	color: #e0d5dd;
+	font-family: "Helvetica", "Tahoma", "Arial", "sans";
+	font-weight: lighter;
+	margin: 5px;
+}
+
+h1 {
+	text-align: center;
+}
+h1, h2, h3 {
+	color: #ffbf80;
+}
+
+a {
+	color: #be9fc1;
+	text-decoration: none;
+}
+a:hover {
+	font-weight: bold;
+}
+
+.container {
+	/*background: black;*/
+	color: #e0d5dd;
+}
+#sketch {
+	position: static;
+	/*background: black;*/
+}
+#vr_bb {
+	position: absolute;
+	/*padding: 1px 30px 1px 30px;*/
+	left: 43%;
+	top: 80%;
+}
