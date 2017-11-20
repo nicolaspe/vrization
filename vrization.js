@@ -41,7 +41,7 @@ function onLoad(){
   let hei = window.innerHeight;
 
   // INITIALIZATION
-  renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer = new THREE.WebGLRenderer({});
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(wid, hei);
   container.appendChild(renderer.domElement);
@@ -111,7 +111,7 @@ function setupVRStage(){
       if(vrDisplay.stageParameters) {
         setStageDimensions(vrDisplay.stageParameters);
       }
-      vrDisplay.requestAnimationFrame(animate);
+      // vrDisplay.requestAnimationFrame(animate);
     }
   });
 }
@@ -122,7 +122,7 @@ function setStageDimensions(stage){
 }
 
 function update(){
-	renderer.animate(animate);
+	window.requestAnimationFrame(animate);
 }
 function animate(timestamp) {
   let delta = Math.min(timestamp - lastRenderTime, 500);
@@ -130,20 +130,16 @@ function animate(timestamp) {
 
   if(vrDisplay.isPresenting){
     controls.update();
-
     effect.render(scene, camera);
-    vrDisplay.requestAnimationFrame(animate);
   } else {
     // controls.update();
-
     renderer.render(scene, camera);
-    window.requestAnimationFrame(animate);
   }
+  vrDisplay.requestAnimationFrame(animate);
 
 	// renderer.render(scene, camera);
   // requestAnimationFrame(animate);  // <- NOT ANYMORE!!
 }
-// update();
 
 /*
  * === EVENTS ===
@@ -170,7 +166,7 @@ function loadPlayButton() {
 function createEnvironment(){
   createLight();
   createDome();
-  createParticles(20);
+  createParticles(80);
 }
 // create lights
 function createLight(){
