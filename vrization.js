@@ -15,6 +15,7 @@ let loader;
 let lastRenderTime;
 
 let effect;
+let vrManager;
 let vrDisplay;    // variable for the display
 let vrButton;     // button to render in VR
 let vrFrame;      // variable for VR frame data needed for display
@@ -103,7 +104,7 @@ function onLoad(){
   update();
 }
 
-// sets up the VR stage
+// sets up the VR stage + button
 function setupVRStage(){
   // get available displays
   navigator.getVRDisplays().then( function(displays){
@@ -113,12 +114,21 @@ function setupVRStage(){
       if(vrDisplay.stageParameters) {
         setStageDimensions(vrDisplay.stageParameters);
       }
+      // setup button
       vrButton = WEBVR.getButton( vrDisplay, renderer );
-      document.body.appendChild( vrButton );
-      // vrDisplay.requestAnimationFrame(animate);
+      document.getElementById('vr_bb').appendChild( vrButton );
     }
   });
+}
+function createVRButton(){
+  vrButton.addEventListener('click', function() {
+    if(true){
 
+    } else {
+
+    }
+
+  });
 }
 // rearrange the scene according to the stage
 // (does nothing for now)
