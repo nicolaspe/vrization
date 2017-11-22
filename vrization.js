@@ -99,7 +99,7 @@ function onLoad(){
   createTone();
   createEnvironment();
 
-  update();
+  // update();
 }
 
 // sets up the VR stage + button
@@ -121,16 +121,6 @@ function setupVRStage(){
     update();
   });
 }
-function createVRButton(){
-  vrButton.addEventListener('click', function() {
-    if(true){
-
-    } else {
-
-    }
-
-  });
-}
 // rearrange the scene according to the stage
 // (does nothing for now)
 function setStageDimensions(stage){
@@ -146,7 +136,7 @@ function animate(timestamp) {
 
   // controls.update();
 
-  if(vrDisplay.isPresenting){
+  if(vrDisplay.isPresenting){s
     controls.update();
     effect.render(scene, camera);
     vrDisplay.requestAnimationFrame(animate);
@@ -183,7 +173,7 @@ function loadPlayButton() {
 function createEnvironment(){
   createLight();
   createDome();
-  createParticles(500);
+  createParticles(400);
 }
 // create lights
 function createLight(){
@@ -211,7 +201,7 @@ function createParticles(part_num){
     // spherical coordinates, mathematical convention
 		let theta = Math.random() *2*Math.PI;
     let gamma = Math.random() *Math.PI;
-		let radio = Math.random()*350;
+		let radio = Math.random() *200 +100;
 		let posX = radio *Math.sin(theta);
 		let posZ = radio *Math.cos(theta);
 		let posY = radio *Math.cos(gamma);
