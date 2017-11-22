@@ -52,6 +52,8 @@ update();
 To use it on Android devices...
 [request token](https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/developer-guide.md)
 
+[Remote debugging](https://developers.google.com/web/tools/chrome-devtools/remote-debugging/)
+
 [How???](https://developers.google.com/web/fundamentals/vr/getting-started-with-webvr/)
 
 Install [Google VR Services](https://play.google.com/store/apps/details?id=com.google.vr.vrcore)
