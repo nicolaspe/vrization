@@ -51,8 +51,6 @@ function onLoad(){
   scene  = new THREE.Scene();
 
   camera = new THREE.PerspectiveCamera(40, wid/hei, 0.1, 1000);
-  // camera.position.set(0, 350, 0);
-  // camera.rotation.set(0, -1.385, 0);
   controls = new THREE.VRControls( camera );
   controls.standing = true;
   controls.update();
@@ -115,11 +113,12 @@ function setupVRStage(){
         setStageDimensions(vrDisplay.stageParameters);
       }
       // setup button
-      vrButton = WEBVR.getButton( vrDisplay, renderer );
+      vrButton = WEBVR.getButton( vrDisplay, renderer.domElement );
       document.getElementById('vr_bb').appendChild( vrButton );
     } else {
       console.log("NO VR DISPLAYS PRESENT");
     }
+    update();
   });
 }
 function createVRButton(){
@@ -150,10 +149,11 @@ function animate(timestamp) {
   if(vrDisplay.isPresenting){
     controls.update();
     effect.render(scene, camera);
+    vrDisplay.requestAnimationFrame(animate);
   } else {
     renderer.render(scene, camera);
+    window.requestAnimationFrame(animate);
   }
-  vrDisplay.requestAnimationFrame(animate);
 
 }
 
