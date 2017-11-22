@@ -136,7 +136,7 @@ function animate(timestamp) {
 
   // controls.update();
 
-  if(vrDisplay.isPresenting){s
+  if(vrDisplay.isPresenting){
     controls.update();
     effect.render(scene, camera);
     vrDisplay.requestAnimationFrame(animate);
