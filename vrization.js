@@ -115,8 +115,10 @@ function setupVRStage(){
         setStageDimensions(vrDisplay.stageParameters);
       }
       // setup button
-      vrButton = WEBVR.getButton( vrDisplay, renderer.domElement );
+      vrButton = WEBVR.getButton( vrDisplay, renderer );
       document.getElementById('vr_bb').appendChild( vrButton );
+    } else {
+      console.log("NO VR DISPLAYS PRESENT");
     }
   });
 }
