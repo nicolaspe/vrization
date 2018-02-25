@@ -34,7 +34,7 @@ let playing = false;
 let play_button;
 
 window.addEventListener('load', onLoad);
-// onLoad();
+
 function onLoad(){
   clock = new THREE.Clock();
   container = document.querySelector('#sketch');
@@ -58,37 +58,9 @@ function onLoad(){
 
   loader = new THREE.TextureLoader();
 
-  // set AudioContext to Tone.js
-  // THREE.setContext(Tone.context);
-
   // Initialize (Web)VR
   renderer.vr.enabled = true;
   setupVRStage();
-
-  // vrButton = WEBVR.getButton( vrDisplay, renderer );
-  // document.body.appendChild( vrButton );
-
-  // let vrui_options = {
-  //   color: 'white',
-  //   background: false,
-  //   corners: 'round'
-  // };
-  // vrButton = new webvrui.EnterVRButton(renderer.domElement, vrui_options);
-  // vrButton.on("enter", function(){
-  //   console.log("Enter VR");
-  // });
-  // vrButton.on("exit", function(){
-  //   console.log("Exit VR");
-  //   camera.quaternion.set(0, 0, 0, 1);
-  //   camera.position.set(0, controls.userHeight, 0);
-  // });
-  // vrButton.on("hide", function(){
-  //   document.getElementById('vr_bb').style.display = 'none';
-  // });
-  // vrButton.on("show", function(){
-  //   document.getElementById('vr_bb').style.display = 'inherit';
-  // });
-  // document.getElementById('vr_bb').appendChild(vrButton.domElement);
 
   // EVENTS
   window.addEventListener('resize', onWindowResize, true );
@@ -98,8 +70,6 @@ function onLoad(){
   // initialization
   createTone();
   createEnvironment();
-
-  // update();
 }
 
 // sets up the VR stage + button
@@ -126,7 +96,16 @@ function setupVRStage(){
 function setStageDimensions(stage){
   ;
 }
+function createVRButton(){
+  vrButton.addEventListener('click', function() {
+    if(vrDisplay.isPresenting){
+      console.log()
+    } else {
 
+    }
+
+  });
+}
 function update(){
 	window.requestAnimationFrame(animate);
 }
@@ -212,7 +191,7 @@ function createParticles(part_num){
 	let part_mat = new THREE.PointsMaterial({
 		color: 0xdd99ff,
 		size: 20,
-		map: loader.load("media/particle_img.png"),
+		map: loader.load("media/particle_2.png"),
 		transparent: true,
 		blending: THREE.AdditiveBlending,
 	});
